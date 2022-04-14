@@ -115,6 +115,75 @@ COUNTRY
 SELECT country.continent, FLOOR(AVG(city.population)) FROM country, city WHERE city.countrycode = country.code GROUP BY country.continent;
 ```
 
+# Population Census
 
+Source: https://www.hackerrank.com/challenges/asian-population/problem?isFullScreen=true
 
+Given the CITY and COUNTRY tables, query the sum of the populations of all cities where the CONTINENT is 'Asia'.
 
+Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+
+Input Format
+
+The CITY and COUNTRY tables are described as follows:
+ 
+CITY
+
+| Field       | Type         |
+| ------------| -------------|
+| ID          | NUMBER       |
+| NAME        | VARCHAR2(17) |
+| COUNTRYCODE | VARCHAR2(3)  |
+| DISTRICT    | VARCHAR2(20) |
+| POPULATION  | NUMBER       |
+
+COUNTRY
+
+| Field          | Type         |
+| ---------------| -------------|
+| CODE           | VARCHAR2(3)  |
+| NAME           | VARCHAR2(44) |
+| CONTINENT      | VARCHAR2(13) |
+| REGION         | VARCHAR2(25) |
+| SURFACEAREA    | NUMBER       |
+| INDEPYEAR      | VARCHAR2(5)  |
+| POPULATION     | NUMBER       |
+| LIFEEXPECTANCY | VARCHAR2(4)  |
+| GNP            | NUMBER       |
+| GNPOLD         | VARCHAR2(9)  |
+| LOCALNAME      | VARCHAR2(44) |
+| GOVERNMENTFORM | VARCHAR2(44) |
+| HEADOFSTATE    | VARCHAR2(32) |
+| CAPITAL        | VARCHAR2(4)  |
+| CODE2          | VARCHAR2(2)  |
+
+***Solution***
+
+```
+SELECT DISTINCT SUM(city.population) FROM country INNER JOIN city ON country.code = city.countrycode WHERE Country.Continent='Asia';
+```
+
+# Top Earners
+
+Source: https://www.hackerrank.com/challenges/earnings-of-employees/problem?isFullScreen=true
+
+We define an employee's total earnings to be their monthly salary * monthes worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. Then print these values as 2 space-separated integers.
+
+Input Format
+
+The Employee table containing employee data for a company is described as follows:
+
+| Column      | Type    |
+| ------------| --------|
+| employee_id | Itneger |
+| name        | String  |
+| months      | Integer |
+| salary      | Integer |
+
+where employee_id is an employee's ID number, name is their name, months is the total number of months they've been working for the company, and salary is the their monthly salary.
+
+***Solution**
+
+```
+SELECT MAX(months * salary), COUNT(months * salary) FROM Employee WHERE (months * salary) = (SELECT MAX(months * salary) FROM Employee);
+```
