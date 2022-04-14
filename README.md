@@ -1,2 +1,2 @@
 # SQL
-SQL examples
+Examples of SQL queries for Hackerrank tasks.
