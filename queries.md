@@ -16,16 +16,12 @@ The TRIANGLES table is described as follows:
 ***Input Format***  
   
 The TRIANGLES table is described as follows:  
-  
-+--------+---------+
+
 | Column | Type    |
-+--------+---------+
-| A      | Integer |
-+--------+---------+
+| -------| --------|
+| A      | Itneger |
 | B      | Integer |
-+--------+---------+
 | C      | Integer |
-+--------+---------+
   
 ***Solution***   
 
@@ -36,7 +32,7 @@ SELECT
     WHEN A = B and B = C THEN 'Equilateral'
     WHEN A = B or A = C or B = C THEN 'Isosceles'
     WHEN A <> B and B <> C THEN 'Scalene'
-  END tuple
+  END
 FROM TRIANGLES;
 ```
   
