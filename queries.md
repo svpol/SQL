@@ -119,7 +119,7 @@ Given the CITY and COUNTRY tables, query the sum of the populations of all citie
 
 Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
 
-Input Format
+***Input Format***
 
 The CITY and COUNTRY tables are described as follows:
  
@@ -165,7 +165,7 @@ Source: https://www.hackerrank.com/challenges/earnings-of-employees/problem?isFu
 
 We define an employee's total earnings to be their monthly salary * monthes worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. Then print these values as 2 space-separated integers.
 
-Input Format
+***Input Format***
 
 The Employee table containing employee data for a company is described as follows:
 
@@ -206,4 +206,35 @@ The Name column only contains uppercase (A-Z) and lowercase (a-z) letters.
 
 ```
 SELECT name FROM students WHERE marks > 75 ORDER BY RIGHT(name, 3) ASC, id ASC;
+```
+
+# The PADS
+
+Source: https://www.hackerrank.com/challenges/the-pads/problem?isFullScreen=true
+
+Generate the following two result sets:
+
+1. Query an alphabetically ordered list of all names in OCCUPATIONS, immediately followed by the first letter of each profession as a parenthetical (i.e.: enclosed in parentheses). For example: AnActorName(A), ADoctorName(D), AProfessorName(P), and ASingerName(S).
+2. Query the number of ocurrences of each occupation in OCCUPATIONS. Sort the occurrences in ascending order, and output them in the following format:
+```
+There are a total of [occupation_count] [occupation]s.
+```
+where `[occupation_count]` is the number of occurrences of an occupation in OCCUPATIONS and `[occupation]` is the lowercase occupation name. If more than one Occupation has the same `[occupation_count]`, they should be ordered alphabetically.
+
+Note: There will be at least two entries in the table for each type of occupation.
+
+***Input Format***
+
+The OCCUPATIONS table is described as follows:
+
+| Column     | Type   |
+| -----------| -------|
+| Name       | String |
+| Occupation | String |
+
+***Solution**
+
+```
+SELECT CONCAT(name, '(', SUBSTRING(occupation, 1, 1), ')') FROM occupations ORDER BY name;
+SELECT CONCAT('There are a total of ', COUNT(occupation), ' ', LOWER(occupation), 's.') FROM occupations GROUP BY occupation ORDER BY COUNT(occupation), occupation;
 ```
