@@ -232,7 +232,7 @@ The OCCUPATIONS table is described as follows:
 | Name       | String |
 | Occupation | String |
 
-***Solution**
+***Solution***
 
 ```
 SELECT CONCAT(name, '(', SUBSTRING(occupation, 1, 1), ')') FROM occupations ORDER BY name;
